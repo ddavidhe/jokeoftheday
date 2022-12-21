@@ -1,0 +1,11 @@
+{
+    "name": "Joke of the Day",
+    "version": "1.0.0",
+    "description": "latest jokeoftheday duh",
+    "manifest_version": 3,
+    "author": "David",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Latest JOKE >:("
+    }
+}
