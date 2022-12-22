@@ -1,6 +1,45 @@
 async function fetchData() {
     const res = await fetch ("https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun?type=single");
-    const record = await res.json();
-    document.getElementById("date").innerHTML=record.joke
+    let record = await res.json();
+    console.log("fetch a joke: ", record.joke);
+    localStorage.setItem("joke", record.joke)
+    return record.joke
 }
-fetchData();
+
+async function printJoke(joke) {
+    ///update the element ID and update local storage time :D
+    /// fetch data will call update Extentions
+    console.log("printing joke: ", joke)
+    document.getElementById("date").innerHTML=joke;
+    
+}
+
+function dateFormat(date) {
+    let day = date.getUTCDate().toString();
+    let month = date.getUTCMonth().toString();
+    let year = date.getUTCFullYear().toString();
+
+    return year.concat(month.concat(day));
+
+}
+
+async function jokeTiming() {
+    let oldDate = localStorage.getItem("jokedate")
+    let now = dateFormat(new Date())
+ 
+    if (oldDate === null) {
+        oldDate = "20000101"
+    }
+    if (oldDate !== now) {
+        printJoke(await fetchData())
+        localStorage.setItem("jokedate", now)
+    } else {
+        printJoke(localStorage.getItem("joke"))
+    }
+}
+
+jokeTiming();
+
+// so getUTCDate returns the date? like, the 21st
+// getUTCMonth returns the month, so the 11th
+// and year is the year obivously, 2022
