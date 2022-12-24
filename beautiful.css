@@ -2,6 +2,12 @@ body {
     background-color: snow;
 }
 
+.dark-mode {
+    background-color: black;
+    color: white;
+
+}
+
 h2 {
     text-align: center;
 }
@@ -10,5 +16,5 @@ p {
     border: 2px;
     text-align: left;
     font-family: 'Times New Roman', Times, serif;
-
+    font-size: large;
 }

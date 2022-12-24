@@ -23,13 +23,19 @@ function dateFormat(date) {
 
 }
 
+function displayToggle() {
+    let element = document.body;
+    element.classList.toggle("dark-mode");
+    console.log("button clicked")
+}
+
 async function jokeTiming() {
-    let oldDate = localStorage.getItem("jokedate")
+    let oldDate = localStorage.getItem("jokedate") || "00000000"
     let now = dateFormat(new Date())
  
-    if (oldDate === null) {
-        oldDate = "20000101"
-    }
+    // if (oldDate === null) {
+    //     oldDate = "20000101"
+    // }
     if (oldDate !== now) {
         printJoke(await fetchData())
         localStorage.setItem("jokedate", now)
