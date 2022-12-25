@@ -17,9 +17,9 @@ async function printJoke(joke) {
 }
 
 function dateFormat(date) {
-    let day = date.getUTCDate().toString();
-    let month = date.getUTCMonth().toString();
-    let year = date.getUTCFullYear().toString();
+    let day = date.getDate().toString();
+    let month = date.getMonth().toString();
+    let year = date.getFullYear().toString();
 
     return year.concat(month.concat(day));
 
@@ -42,7 +42,9 @@ function displayToggle() {
 
 async function jokeTiming() {
     let oldDate = localStorage.getItem("jokedate") || "00000000"
-    let now = dateFormat(new Date())
+    let now = dateFormat(new Date());
+    let dateText = "Today's date is: ";
+    document.getElementById("datebox").innerText = dateText.concat(new Date().toDateString().slice(0, 16))
  
     // if (oldDate === null) {
     //     oldDate = "20000101"
