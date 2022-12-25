@@ -1,3 +1,5 @@
+document.getElementById("darkmode").addEventListener("click", displayToggle)
+
 async function fetchData() {
     const res = await fetch ("https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun?type=single");
     let record = await res.json();
@@ -10,7 +12,7 @@ async function printJoke(joke) {
     ///update the element ID and update local storage time :D
     /// fetch data will call update Extentions
     console.log("printing joke: ", joke)
-    document.getElementById("date").innerHTML=joke;
+    document.getElementById("joketext").innerHTML=joke;
     
 }
 
@@ -26,6 +28,15 @@ function dateFormat(date) {
 function displayToggle() {
     let element = document.body;
     element.classList.toggle("dark-mode");
+    let buttonText = document.getElementById("darkmode").innerText
+    buttonText = (buttonText == "Dark Mode") ? 
+        document.getElementById("darkmode").innerText = "Light Mode" : document.getElementById("darkmode").innerText = "Dark Mode"
+
+    // alternatively: this if/else combo works the same
+    // if (document.getElementById("darkmode").innerText == "Dark Mode") {
+    //     document.getElementById("darkmode").innerText="Light Mode"
+    // } else { document.getElementById("darkmode").innerText="Dark Mode" }
+
     console.log("button clicked")
 }
 
