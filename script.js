@@ -1,11 +1,20 @@
 document.getElementById("darkmode").addEventListener("click", displayToggle)
 
-async function fetchData() {
+async function fetchJoke() {
+    // const res = await fetch ("https://v2.jokeapi.dev/joke/Any?idRange=1-3")
     const res = await fetch ("https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Pun?type=single");
     let record = await res.json();
-    console.log("fetch a joke: ", record.joke);
-    localStorage.setItem("joke", record.joke)
+    console.log("fetched a joke: ", record.joke);
     return record.joke
+}
+
+function checkDiffJoke(joke) {
+    let oldJoke = localStorage.getItem("joke") || "hello world joke";
+    console.log("oldjoke: ", oldJoke);
+    console.log("current joke: ", joke);
+    console.log("checkDiffJoke? ", joke != oldJoke);
+    if (!joke) { return false }
+    return joke != oldJoke;
 }
 
 async function printJoke(joke) {
@@ -16,7 +25,7 @@ async function printJoke(joke) {
     
 }
 
-function dateFormat(date) {
+function formatDate(date) {
     let day = date.getDate().toString();
     let month = date.getMonth().toString();
     let year = date.getFullYear().toString();
@@ -40,9 +49,9 @@ function displayToggle() {
     console.log("button clicked")
 }
 
-async function jokeTiming() {
+async function main() {
     let oldDate = localStorage.getItem("jokedate") || "00000000"
-    let now = dateFormat(new Date());
+    let now = formatDate(new Date());
     let dateText = "Today's date is: ";
     document.getElementById("datebox").innerText = dateText.concat(new Date().toDateString().slice(0, 16))
  
@@ -50,14 +59,23 @@ async function jokeTiming() {
     //     oldDate = "20000101"
     // }
     if (oldDate !== now) {
-        printJoke(await fetchData())
+    // if (true) {
+        let joke = "";
+        let jokeGood = false;
+        while (!jokeGood) {
+            console.log("in loop with joke: ", joke)
+            joke = await fetchJoke();
+            jokeGood = checkDiffJoke(joke);
+        }
+        printJoke(joke);
+        localStorage.setItem("joke", joke)
         localStorage.setItem("jokedate", now)
     } else {
         printJoke(localStorage.getItem("joke"))
     }
 }
 
-jokeTiming();
+main();
 
 // so getUTCDate returns the date? like, the 21st
 // getUTCMonth returns the month, so the 11th

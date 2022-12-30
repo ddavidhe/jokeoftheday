@@ -1,7 +1,7 @@
 {
     "name": "Joke of the Day",
-    "version": "1.0.2",
-    "description": "Shows the latest joke of the day! :)",
+    "version": "1.0.3",
+    "description": "Shows a single joke of the day! :)",
     "manifest_version": 3,
     "author": "David",
     "action":{
