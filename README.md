@@ -1,11 +1,21 @@
 # jokeoftheday
 
-This is David's winter 2022 side project to create a chrome extension that calls the Jokes API and displays a joke every day.
+Display a unique coding/pun related joke each day!
+
+A Chrome extension created using HTML, JavaScript, and CSS. Uses the JokeAPI.
+
+From this project I learned:
+
+- Fetch API data with JSON, and display accordingly
+- Utilize Promises, with Async and Await function calls
+- To use the manifest.json file to create chrome extensions
+- Store values in local storage to ensure a unique joke appears each day
+
 
 TODO items: 
 - ~~add a date of the joke~~
 - ~~add dark mode~~
 - ~~ensure that the same joke of the day does not occur yesterday and today~~
-- add colours and other styling
 - ~~link to github~~
+- add colours and other styling
 - publish extension publicly
