@@ -1,6 +1,6 @@
 # jokeoftheday
 
-Display a unique coding/pun related joke each day!
+Display a unique coding-related joke/pun each day!
 
 A Chrome extension created using HTML, JavaScript, and CSS. Uses the JokeAPI.
 
