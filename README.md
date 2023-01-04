@@ -17,5 +17,4 @@ TODO items:
 - ~~add dark mode~~
 - ~~ensure that the same joke of the day does not occur yesterday and today~~
 - ~~link to github~~
-- add colours and other styling
-- publish extension publicly
+- ~~publish extension publicly~~ (learned it costs money)
